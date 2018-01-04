@@ -4,7 +4,7 @@
     'use strict';
 
     // Create the defaults once
-    var pluginName = "inputCharCount",
+    var pluginName = 'inputCharCount',
         defaults = {
             enableMaxAttributeName: 'data-input-char-count-enable-max',
             displayMaxValue: false,
@@ -80,6 +80,7 @@
                  * and `undefined` values. The sign of `-0` is preserved.
                  *
                  * @param mixed value The value to convert.
+                 * @param array trueValues The values considered to be true.
                  * @return bool
                  * @see https://github.com/epeli/underscore.string/blob/master/toBoolean.js
                  */
@@ -180,5 +181,13 @@
             }
         });
     };
+
+    // Auto initialize those form elements having the appropriate class.
+    $(function () {
+
+        $('input[type="text"].input-char-count, textarea.input-char-count').inputCharCount();
+
+    });
+
 
 })(jQuery, window, document);

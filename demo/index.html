@@ -26,19 +26,19 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-12">
-                                <input type="text" class="form-control" />
+                                <input type="text" class="form-control input-char-count" />
                                 <span class="help-block">Empty <code>input</code> element without <code>maxlength</code> attribute.</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <input type="text" class="form-control" maxlength="100" />
+                                <input type="text" class="form-control input-char-count" maxlength="100" />
                                 <span class="help-block">Empty <code>input</code> element with <code>maxlength</code> attribute.</span>
                             </div>
                         </div> 
                         <div class="row">
                             <div class="col-xs-12">
-                                <input type="text" class="form-control" maxlength="100" data-input-char-count-enable-max="false" />
+                                <input type="text" class="form-control input-char-count" maxlength="100" data-input-char-count-enable-max="false" />
                                 <span class="help-block">Empty <code>input</code> element with <code>maxlength</code> attribute but max display disabled via <code>data-input-char-count-enable-max="false"</code>.</span>
                             </div>
                         </div> 
@@ -49,13 +49,13 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-12">
-                                <input type="text" class="form-control" value="Lorem ipsum dolor sit amet, consetetur sadipscing ..." />
+                                <input type="text" class="form-control input-char-count" value="Lorem ipsum dolor sit amet, consetetur sadipscing ..." />
                                 <span class="help-block">Non-empty <code>input</code> element without <code>maxlength</code> attribute.</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <input type="text" class="form-control" maxlength="100" value="Lorem ipsum dolor sit amet, consetetur sadipscing ..." />
+                                <input type="text" class="form-control input-char-count" maxlength="100" value="Lorem ipsum dolor sit amet, consetetur sadipscing ..." />
                                 <span class="help-block">Non-empty <code>input</code> element with <code>maxlength</code> attribute.</span>
                             </div>
                         </div> 
@@ -66,13 +66,13 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-12">
-                                <textarea class="form-control"></textarea>
+                                <textarea class="form-control input-char-count"></textarea>
                                 <span class="help-block">Empty <code>textarea</code> element without <code>maxlength</code> attribute.</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <textarea class="form-control" maxlength="100"></textarea>
+                                <textarea class="form-control input-char-count" maxlength="100"></textarea>
                                 <span class="help-block">Empty <code>textarea</code> element without <code>maxlength</code> attribute.</span>
                             </div>
                         </div> 
@@ -83,13 +83,13 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-12">
-                                <textarea class="form-control">Lorem ipsum dolor sit amet, consetetur sadipscing ...</textarea>
+                                <textarea class="form-control input-char-count">Lorem ipsum dolor sit amet, consetetur sadipscing ...</textarea>
                                 <span class="help-block">Non-empty <code>textarea</code> element without <code>maxlength</code> attribute.</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <textarea class="form-control" maxlength="100">Lorem ipsum dolor sit amet, consetetur sadipscing ...</textarea>
+                                <textarea class="form-control input-char-count" maxlength="100">Lorem ipsum dolor sit amet, consetetur sadipscing ...</textarea>
                                 <span class="help-block">Non-empty <code>textarea</code> element without <code>maxlength</code> attribute.</span>
                             </div>
                         </div> 
@@ -102,13 +102,7 @@
 
         <script src="js/jquery.min.js"></script>
         <script src="js/jquery-input-char-count.js"></script>
-        <script>
 
-            $(function () {
-                $('input[type="text"], textarea').inputCharCount();
-            });
-
-        </script>
     </body>
 
 </html>
