@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>jquery-input-char-count Demo</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="css/jquery-input-char-count-bootstrap3.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <h1>
+                Hello, world!<br />
+                <small>jquery-input-char-count Demo</small>
+            </h1>
+
+            <form>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <input type="text" class="form-control" />
+                                <span class="help-block">Empty <code>input</code> element without <code>maxlength</code> attribute.</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <input type="text" class="form-control" maxlength="100" />
+                                <span class="help-block">Empty <code>input</code> element with <code>maxlength</code> attribute.</span>
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <input type="text" class="form-control" maxlength="100" data-input-char-count-enable-max="false" />
+                                <span class="help-block">Empty <code>input</code> element with <code>maxlength</code> attribute but max display disabled via <code>data-input-char-count-enable-max="false"</code>.</span>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <input type="text" class="form-control" value="Lorem ipsum dolor sit amet, consetetur sadipscing ..." />
+                                <span class="help-block">Non-empty <code>input</code> element without <code>maxlength</code> attribute.</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <input type="text" class="form-control" maxlength="100" value="Lorem ipsum dolor sit amet, consetetur sadipscing ..." />
+                                <span class="help-block">Non-empty <code>input</code> element with <code>maxlength</code> attribute.</span>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <textarea class="form-control"></textarea>
+                                <span class="help-block">Empty <code>textarea</code> element without <code>maxlength</code> attribute.</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <textarea class="form-control" maxlength="100"></textarea>
+                                <span class="help-block">Empty <code>textarea</code> element without <code>maxlength</code> attribute.</span>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <textarea class="form-control">Lorem ipsum dolor sit amet, consetetur sadipscing ...</textarea>
+                                <span class="help-block">Non-empty <code>textarea</code> element without <code>maxlength</code> attribute.</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <textarea class="form-control" maxlength="100">Lorem ipsum dolor sit amet, consetetur sadipscing ...</textarea>
+                                <span class="help-block">Non-empty <code>textarea</code> element without <code>maxlength</code> attribute.</span>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-input-char-count.js"></script>
+        <script>
+
+            $(function () {
+                $('input[type="text"], textarea').inputCharCount();
+            });
+
+        </script>
+    </body>
+
+</html>

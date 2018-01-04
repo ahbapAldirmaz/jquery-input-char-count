@@ -1,0 +1,22 @@
+{
+  "name": "jquery-input-char-count",
+  "version": "1.0.0",
+  "description": "Display character count for inputs or textareas.",
+  "author": "Patrick Berger",
+  "homepage": "https://github.com/patrickberger/jquery-input-char-count",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/patrickberger/jquery-input-char-count.git"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-less": "^1.4.1",
+    "grunt-contrib-uglify": "^3.3.0",
+    "jquery": "^3.2.1",
+    "less-plugin-autoprefix": "^1.5.1"
+  }
+}
