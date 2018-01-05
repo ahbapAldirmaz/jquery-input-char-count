@@ -1,1 +1,9 @@
-@media screen and (max-width:767px){}@media (min-width:768px){}@media (min-width:768px){}@media (max-width:767px){}@media (min-width:768px){}@media (min-width:768px){}@media (max-width:767px){}@media (max-width:767px){}span.form-control-character-count{display:inline;padding:.2em .6em .3em;font-size:75%;font-weight:bold;line-height:1;color:#fff;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25em;background-color:#5bc0de;position:absolute;right:10px;top:-5px}aspan.form-control-character-count:hover,aspan.form-control-character-count:focus{color:#fff;text-decoration:none;cursor:pointer}span.form-control-character-count:empty{display:none}.btn span.form-control-character-count{position:relative;top:-1px}span.form-control-character-count[href]:hover,span.form-control-character-count[href]:focus{background-color:#31b0d5}
+/*!
+ * Project: jquery-input-char-count
+ * Homepage: https://github.com/patrickberger/jquery-input-char-count
+ * Version: 1.0.0
+ * Author: Patrick Berger (pb@patrickberger.org, https://github.com/patrickberger)
+ * Date: January 5th, 2018
+ * Copyright (C) 2018
+ */@media print{span.form-control-character-count{border:1px solid #000}}span.form-control-character-count{display:inline;padding:.2em .6em .3em;font-size:75%;font-weight:700;line-height:1;color:#fff;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25em}aspan.form-control-character-count:focus,aspan.form-control-character-count:hover{color:#fff;text-decoration:none;cursor:pointer}span.form-control-character-count:empty{display:none}.btn span.form-control-character-count{position:relative;top:-1px}span.form-control-character-count{background-color:#5bc0de}span.form-control-character-count[href]:focus,span.form-control-character-count[href]:hover{background-color:#31b0d5}span.form-control-character-count{position:absolute;right:10px;top:-5px}
+/*# sourceMappingURL=jquery-input-char-count-bootstrap3.min.css.map */

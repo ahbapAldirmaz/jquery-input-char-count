@@ -1,3 +1,11 @@
+/*!
+ * Project: jquery-input-char-count
+ * Homepage: https://github.com/patrickberger/jquery-input-char-count
+ * Version: 1.0.0
+ * Author: Patrick Berger (pb@patrickberger.org, https://github.com/patrickberger)
+ * Date: January 5th, 2018
+ * Copyright (C) 2018
+ */
 /*global jQuery, window, document*/
 ;(function ( $, window, document, undefined ) {
     

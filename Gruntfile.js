@@ -1,3 +1,4 @@
+/*jshint node: true*/
 /*global module, require*/
 module.exports = function (grunt) {
 
@@ -7,6 +8,10 @@ module.exports = function (grunt) {
 
         meta: {
 
+            // Package information.
+            pkg: grunt.file.readJSON('package.json'),
+
+            // Directories.
             demo: {
                 css: 'demo/css',
                 js: 'demo/js',
@@ -15,19 +20,63 @@ module.exports = function (grunt) {
 
             release: {
                 css: 'dist/css',
-                js: 'dist/js'
+                js: 'dist/js',
+                root: 'dist'
+            },
+
+            temp: {
+                css: 'temp/css',
+                js: 'temp/js',
+                root: 'temp'
             },
 
             source: {
                 html: 'src/html',
                 js: 'src/js',
                 less: 'src/less'
-            }
+            },
+
+            // Put some credentials on top of generated output files.
+            // Usage: '<%= meta.banner.join("\\n") %>\n'.
+            banner: [
+                '/*!',
+                ' * Project: <%= meta.pkg.name %>',
+                ' * Homepage: <%= meta.pkg.homepage %>',
+                ' * Version: <%= meta.pkg.version %>',
+                ' * Author: <%= meta.pkg.author.name %> (<%= meta.pkg.author.email %>, <%= meta.pkg.author.url %>)',
+                ' * Date: <%= grunt.template.today("mmmm dS, yyyy") %>',
+                ' * Copyright (C) <%= grunt.template.today("yyyy") %>',
+                ' */'
+            ]
+
         },
 
         clean: {
-            demo: 'demo',
-            release: 'dist'
+            demo: '<%= meta.demo.root %>',
+            release: '<%= meta.release.root %>',
+            temp: '<%= meta.temp.root %>'
+        },
+
+        // Add credential banners to the output files.
+        concat: {
+            js: {
+                src: ['<%= meta.source.js %>/jquery-input-char-count.js'],
+                dest: '<%= meta.temp.js %>/jquery-input-char-count.js',
+                options: {
+                    banner: '<%= meta.banner.join("\\n") %>\n'
+                }
+            }
+        },
+
+        cssmin: {
+            options: {
+                sourceMap: true
+            },
+            release: {
+                files: {
+                    '<%= meta.release.css %>/jquery-input-char-count-bootstrap3.min.css': ['<%= meta.temp.css %>/jquery-input-char-count-bootstrap3.css']
+                }
+            }
         },
 
         copy: {
@@ -43,7 +92,8 @@ module.exports = function (grunt) {
             },
             release: {
                 files: [
-                    {src: '<%= meta.source.js %>/jquery-input-char-count.js', dest: '<%= meta.release.js %>/jquery-input-char-count.js'}
+                    {src: '<%= meta.temp.js %>/jquery-input-char-count.js', dest: '<%= meta.release.js %>/jquery-input-char-count.js'},
+                    {src: '<%= meta.temp.css %>/jquery-input-char-count-bootstrap3.css', dest: '<%= meta.release.css %>/jquery-input-char-count-bootstrap3.css'}
                 ]
             }
         },
@@ -51,6 +101,7 @@ module.exports = function (grunt) {
         less: {
             release: {
                 options: {
+                    banner: '<%= meta.banner.join("\\n") %>\n',
                     cleancss: true,
                     compress: false
                 },
@@ -58,30 +109,24 @@ module.exports = function (grunt) {
                     new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]})
                 ],
                 files: {
-                    '<%= meta.release.css %>/jquery-input-char-count-bootstrap3.css': '<%= meta.source.less %>/jquery-input-char-count-bootstrap3.less'
+                    '<%= meta.temp.css %>/jquery-input-char-count-bootstrap3.css': '<%= meta.source.less %>/jquery-input-char-count-bootstrap3.less'
                 }
-            },
-            releaseMin: {
-                options: {
-                    cleancss: true,
-                    compress: true
-                },
-                plugins: [
-                    new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]})
-                ],
-                files: {
-                    '<%= meta.release.css %>/jquery-input-char-count-bootstrap3.min.css': '<%= meta.source.less %>/jquery-input-char-count-bootstrap3.less'
-                }
-            },
+            }
         },
 
         uglify: {
             options: {
-                mangle: false
+                banner: '<%= meta.banner.join("\\n") %>',
+                compress: true,
+                mangle: true,
+                output: {
+                    comments: false
+                },
+                sourceMap: true
             },
             release: {
                 files: {
-                    '<%= meta.release.js %>/jquery-input-char-count.min.js': '<%= meta.source.js %>/jquery-input-char-count.js'
+                    '<%= meta.release.js %>/jquery-input-char-count.min.js': '<%= meta.temp.js %>/jquery-input-char-count.js'
                 }
             }
         }
@@ -89,11 +134,13 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-copy');
 
-    grunt.registerTask('release', ['clean:release', 'less:release', 'less:releaseMin', 'copy:release', 'uglify:release']);
+    grunt.registerTask('release', ['clean:release', 'less:release', 'concat:js', 'cssmin:release', 'copy:release', 'uglify:release', 'clean:temp']);
     grunt.registerTask('demo', ['release', 'clean:demo', 'copy:demo']);
 
 };
